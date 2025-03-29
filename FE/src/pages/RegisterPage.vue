@@ -4,13 +4,13 @@
     <h3>Register Page</h3>
     <div class="row">
       <div class="col-6">
-        <q-input class="q-mx-lg" v-model="registerData.name" label="Name" outlined rounded />
-        <q-input class="q-mx-lg" v-model="registerData.mobile" label="Mobile" outlined rounded />
+        <q-input class="q-mx-lg" v-model="name" label="Name" outlined rounded />
+        <q-input class="q-mx-lg" v-model="mobile" label="Mobile" outlined rounded />
       </div>
       <div class="col-6">
         <q-input
           class="q-mx-lg"
-          v-model="registerData.password"
+          v-model="password"
           label="Password"
           outlined
           rounded
@@ -49,23 +49,30 @@
 <script setup>
 import { Notify } from 'quasar'
 import { api } from 'src/boot/axios'
-import { reactive, ref } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const isPwd = ref(true)
 const isPwdConfirm = ref(true)
 const router = useRouter()
 const confirmpassword = ref(null)
-const registerData = reactive({
-  name: null,
-  mobile: null,
-  password: null,
-})
+const name = ref('')
+const mobile = ref('')
+const password = ref('')
+// const registerData = reactive({
+//   name: null,
+//   mobile: null,
+//   password: null,
+// })
 
 function register() {
-  if (registerData.password == confirmpassword.value) {
+  if (password.value == confirmpassword.value) {
     api
-      .post('api/register', registerData)
+      .post('api/register', {
+        name : name.value,
+        mobile : mobile.value,
+        password : password.value,
+      })
       .then((r) => {
         Notify.create({
           type: 'positive',

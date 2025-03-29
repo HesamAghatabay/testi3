@@ -24,7 +24,7 @@
           </template>
         </q-input>
       </div>
-      <q-btn @click="login" class="q-ma-md" color="blue-8">Register</q-btn>
+      <q-btn @click="login" class="q-ma-md" color="blue-8">Login</q-btn>
     </div>
   </q-page>
 </template>
@@ -67,7 +67,7 @@ function login() {
       router.push('/')
     })
     .catch((e) => {
-      console.log(e)
+      console.error(e)
       Notify.create({
         type: 'negative',
         position: 'top',

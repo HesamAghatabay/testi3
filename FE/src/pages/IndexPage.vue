@@ -1,10 +1,7 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page class="text-center">
+    <h3> Index Page</h3>
+    <q-btn to="category" color="green-9"> Go To Category Page</q-btn>
   </q-page>
 </template>
 
